@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="jumbotron">
+                        <h5 class="display-4"><b>Weather Dashboard</b></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<!-- Search for the city -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <label>Search for a city</label>
+                <input type="text" class="form-control">
+                <button type="subtmit" class="btn btn-light">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Container  -->
+<div class="container" id="weatherReport">
+    <div class="row">
+        <div class="col-4">
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<!-- Popular Cities  -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8">
+            <button type="button" class="btn btn-light" id="austinBtn">Austin </button>
+            <br>
+            <button type="button" class="btn btn-light" id="chicagoBtn">Chicago </button>
+            <br>
+            <button type="button" class="btn btn-light" id="newyorkBtn">New York </button>
+            <br>
+            <button type="button" class="btn btn-light" id="orlandoBtn">Orlando </button>
+            <br>
+            <button type="button" class="btn btn-light" id="sanfransiscoBtn">San Fransisco</button>
+            <br>
+            <button type="button" class="btn btn-light" id="seatleBtn">Seattle</button>
+            <br>
+            <button type="button" class="btn btn-light" id="denverBtn">Denver</button>
+            <br>
+            <button type="button" class="btn btn-light" id="alantaBtn">Alanta</button>
+            <br>
+        </div>
+    </div>
+</div>
+
+<!-- Lower Container  -->
+<div class="container">
+    <div class="row">
+        <div class="col">
+            test
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
