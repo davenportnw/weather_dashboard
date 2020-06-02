@@ -27,8 +27,8 @@
         <div class="row">
             <div class="col-3">
                 <label>Search for a city</label>
-                <input type="text" class="form-control">
-                <button type="subtmit" class="btn btn-light">Search</button>
+                <input type="text" class="form-control" id="searchCities">
+                <button type="subtmit" id="submitCity" class="btn btn-light">Search</button>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-</body>
+
 </html>
 <!-- Popular Cities  -->
 <div class="container-fluid">
@@ -74,8 +74,25 @@
         </div>
     </div>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="app.js"></script>
+<!-- <script src="app.js"></script> -->
+<script type="text/javascript">
+
+$("#submitCity").on("click",function(event) {
+    event.preventDefault();
+
+    var city = $("#searchCities").val();
+
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=12894d5822e7f76bc0b52a517964b8f4";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+    });
+});
+</script>
 
 </body>
 </html>
