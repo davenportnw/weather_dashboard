@@ -33,13 +33,6 @@
         </div>
     </div>
 
-    <!-- Top Container  -->
-<div class="container" id="weatherReport">
-    <div class="row">
-        <div class="col-4">
-        </div>
-    </div>
-</div>
 
 </html>
 <!-- Popular Cities  -->
@@ -63,35 +56,51 @@
             <button type="button" class="btn btn-light" id="alantaBtn">Alanta</button>
             <br>
         </div>
-    </div>
-</div>
+    <!-- Top Container -->
+        <div class="col-3" id="weatherReport">
 
-<!-- Lower Container  -->
-<div class="container">
-    <div class="row">
-        <div class="col">
-            test
         </div>
     </div>
 </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- <script src="app.js"></script> -->
 <script type="text/javascript">
 
-$("#submitCity").on("click",function(event) {
-    event.preventDefault();
 
+function generateReport(city){
     var city = $("#searchCities").val();
-
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=12894d5822e7f76bc0b52a517964b8f4";
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        console.log(response);
+        console.log("response",response);
+        // Name of Response
+        var responseName = response.name;
+        
+        //Display city name
+
+        var nam3 = $("weatherReport").innerHTML = $("<h1>").text(responseName);
+        console.log("nam3", nam3);
+        $("#weatherReport").append(nam3);
+        
+        
+
     });
+};
+
+
+$("#submitCity").on("click",function(event) {
+    event.preventDefault();
+    generateReport();
 });
+
+// $("#austinBtn").on("click",generateReport("Austin"));
+
+
+
 </script>
 
 </body>
