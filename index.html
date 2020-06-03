@@ -49,7 +49,7 @@
             <br>
             <button type="button" class="btn btn-light" id="sanfransiscoBtn">San Fransisco</button>
             <br>
-            <button type="button" class="btn btn-light" id="seatleBtn">Seattle</button>
+            <button type="button" class="btn btn-light" id="seattleBtn">Seattle</button>
             <br>
             <button type="button" class="btn btn-light" id="denverBtn">Denver</button>
             <br>
@@ -110,19 +110,81 @@ function generateReport(city){
     });
 };
 
+function generateCityReport (city){
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=12894d5822e7f76bc0b52a517964b8f4";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        console.log("response",response);
+        // Name of Response
+        var responseName = response.name;
+        
+        //Display city name
+        let nam3 = $("<h1>").text(responseName);
+        $("#weatherReport").html(nam3);
+
+        //Display current date
+        let today = moment().format('MMMM Do YYYY');
+        let date = $("<h5>").text(today);
+        $("#weatherReport").append(date);
+        
+        //Display location temperature
+        let temperature = response.main.temp;    
+        let displayTemp = $("<p>").text("Temperature: " + temperature);
+        $("#weatherReport").append(displayTemp);
+     
+        //Display location humidity
+        let humidity = response.main.humidity;    
+        let displayHumidity = $("<p>").text("Humidity: " + humidity);
+        $("#weatherReport").append(displayHumidity);
+
+        //Display location windspeed
+        let wind = response.wind.speed;    
+        let displayWindSpeed = $("<p>").text("Wind Speed: " + wind);
+        $("#weatherReport").append(displayWindSpeed);
+
+    });
+}
 
 $("#submitCity").on("click",function(event) {
 event.preventDefault();
 generateReport();
 });
 
-$("#austinBtn").on("click", generateReport("Austin"));
 
-
-
-
-
-
+$("#austinBtn").on("click", function(event) {
+    event.preventDefault();
+    generateCityReport("Austin");   
+});
+$("#chicagoBtn").on("click", function(event) {
+    event.preventDefault();
+    generateCityReport("Chicago");   
+});
+$("#newyorkBtn").on("click", function(event) {
+    event.preventDefault();
+    generateCityReport("New York");   
+});
+$("#orlandoBtn").on("click", function(event) {
+    event.preventDefault();
+    generateCityReport("Orlando");   
+});
+$("#sanfransiscoBtn").on("click", function(event) {
+    event.preventDefault();
+    generateCityReport("San Fransisco");   
+});
+$("#seattleBtn").on("click", function(event) {
+    event.preventDefault();
+    generateCityReport("Seattle");   
+});
+$("#denverBtn").on("click", function(event) {
+    event.preventDefault();
+    generateCityReport("Denver");   
+});
+$("#alantaBtn").on("click", function(event) {
+    event.preventDefault();
+    generateCityReport("Alanta");   
+});
 </script>
 
 </body>
