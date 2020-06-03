@@ -84,44 +84,42 @@ function generateReport(city){
         var responseName = response.name;
         
         //Display city name
-        var nam3 = $("#weatherReport").innerHTML = $("<h1>").text(responseName);
-        $("#weatherReport").append(nam3);
+        let nam3 = $("<h1>").text(responseName);
+        $("#weatherReport").html(nam3);
 
         //Display current date
-
         let today = moment().format('MMMM Do YYYY');
-        let date = $('#weatherReport').innerHTML = $("<h5>").text(today);
+        let date = $("<h5>").text(today);
         $("#weatherReport").append(date);
         
         //Display location temperature
         let temperature = response.main.temp;    
-        let displayTemp = $("#weatherReport").innerHTML = $("<p>").text("Temperature: " + temperature);
-        $("#weatherReport").innerHTML = $("<p>").text(temperature);
+        let displayTemp = $("<p>").text("Temperature: " + temperature);
         $("#weatherReport").append(displayTemp);
      
         //Display location humidity
         let humidity = response.main.humidity;    
-        let displayHumidity = $("#weatherReport").innerHTML = $("<p>").text("Humidity: " + humidity);
-        $("#weatherReport").innerHTML = $("<p>").text(humidity);
+        let displayHumidity = $("<p>").text("Humidity: " + humidity);
         $("#weatherReport").append(displayHumidity);
 
         //Display location windspeed
         let wind = response.wind.speed;    
-        let displayWindSpeed = $("#weatherReport").innerHTML = $("<p>").text("Wind Speed: " + wind);
-        $("#weatherReport").innerHTML = $("<p>").text(wind);
+        let displayWindSpeed = $("<p>").text("Wind Speed: " + wind);
         $("#weatherReport").append(displayWindSpeed);
 
-        
     });
 };
 
 
 $("#submitCity").on("click",function(event) {
-    event.preventDefault();
-    generateReport();
+event.preventDefault();
+generateReport();
 });
 
-// $("#austinBtn").on("click",generateReport("Austin"));
+$("#austinBtn").on("click", generateReport("Austin"));
+
+
+
 
 
 
