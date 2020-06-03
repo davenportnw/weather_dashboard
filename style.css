@@ -2,8 +2,21 @@
     color: white;
     background-color: navy;
     text-align: center;
+    flex-wrap: wrap;
 }
 
-.container-fluid { 
+#cityBtns{ 
     background-color: white;
+    float:left;
 }
+
+#weatherContainer{ 
+    border: 0.5px solid black;
+    float: right;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end space-around;
+    align-items: stretch;
+    
+}
+

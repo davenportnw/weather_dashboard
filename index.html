@@ -23,7 +23,7 @@
     </header>
 
 <!-- Search for the city -->
-    <div class="container-fluid">
+    <div class="container" id="cityBtns">
         <div class="row">
             <div class="col-3">
                 <label>Search for a city</label>
@@ -36,9 +36,9 @@
 
 </html>
 <!-- Popular Cities  -->
-<div class="container-fluid">
+<div class="container" id="cityBtns">
     <div class="row">
-        <div class="col-8">
+        <div class="col-md-8">
             <button type="button" class="btn btn-light" id="austinBtn">Austin </button>
             <br>
             <button type="button" class="btn btn-light" id="chicagoBtn">Chicago </button>
@@ -56,22 +56,25 @@
             <button type="button" class="btn btn-light" id="alantaBtn">Alanta</button>
             <br>
         </div>
-    <!-- Top Container -->
-        <div class="col-3" id="weatherReport">
-
-        </div>
     </div>
+</div>
+    <!-- Top Container -->     
+<div class="container" id="weatherContainer">
+    <div class="col-md-4" id="weatherReport"></div>
 </div>
 
 
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <!-- <script src="app.js"></script> -->
 <script type="text/javascript">
 
 
 function generateReport(city){
     var city = $("#searchCities").val();
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=12894d5822e7f76bc0b52a517964b8f4";
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=12894d5822e7f76bc0b52a517964b8f4";
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -81,13 +84,34 @@ function generateReport(city){
         var responseName = response.name;
         
         //Display city name
-
-        var nam3 = $("weatherReport").innerHTML = $("<h1>").text(responseName);
-        console.log("nam3", nam3);
+        var nam3 = $("#weatherReport").innerHTML = $("<h1>").text(responseName);
         $("#weatherReport").append(nam3);
-        
-        
 
+        //Display current date
+
+        let today = moment().format('MMMM Do YYYY');
+        let date = $('#weatherReport').innerHTML = $("<h5>").text(today);
+        $("#weatherReport").append(date);
+        
+        //Display location temperature
+        let temperature = response.main.temp;    
+        let displayTemp = $("#weatherReport").innerHTML = $("<p>").text("Temperature: " + temperature);
+        $("#weatherReport").innerHTML = $("<p>").text(temperature);
+        $("#weatherReport").append(displayTemp);
+     
+        //Display location humidity
+        let humidity = response.main.humidity;    
+        let displayHumidity = $("#weatherReport").innerHTML = $("<p>").text("Humidity: " + humidity);
+        $("#weatherReport").innerHTML = $("<p>").text(humidity);
+        $("#weatherReport").append(displayHumidity);
+
+        //Display location windspeed
+        let wind = response.wind.speed;    
+        let displayWindSpeed = $("#weatherReport").innerHTML = $("<p>").text("Wind Speed: " + wind);
+        $("#weatherReport").innerHTML = $("<p>").text(wind);
+        $("#weatherReport").append(displayWindSpeed);
+
+        
     });
 };
 
