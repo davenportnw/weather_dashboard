@@ -3,11 +3,22 @@
     background-color: navy;
     text-align: center;
     flex-wrap: wrap;
+    float: center;  
 }
 
-#cityBtns{ 
-    background-color: white;
+#cityChoices{ 
+    /* background-color: lightgray; */
     float:left;
+    margin: -10px;
+    padding: -50px;
+
+}
+
+.cityContainer { 
+    float:left;
+    margin: auto;
+    padding: -50px;
+    background-color: lightgray;
 }
 
 #weatherContainer{ 
@@ -18,5 +29,18 @@
     justify-content: flex-end space-around;
     align-items: stretch;
     
+}
+
+#weatherReport { 
+    border: 2px solid blue;
+    padding: 200x;
+    margin: 100px;
+
+}
+
+.btn {
+    padding: 8px 50px;
+    background-color: white;
+
 }
 
